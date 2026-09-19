@@ -40,7 +40,7 @@ User Function MT681AIN
 	Local cOP        := SH6->H6_OP
 	Local cEndereco  := ""
 
-	Try
+	Begin Sequence
 
 		cEndereco := MT681BscEnd(cOP)
 
@@ -48,9 +48,9 @@ User Function MT681AIN
 			MT681EmpOP(cOP, cEndereco)
 		EndIf
 
-	Catch oErro
+	Recover Using oErro
 		FWLogMsg("ERROR", , "EP", "MT681AIN", , "01", oErro:Description, 0, 0, {})
-	EndTry
+	End Sequence
 
 	RestArea(aAreaSC2)
 	RestArea(aAreaSDC)
