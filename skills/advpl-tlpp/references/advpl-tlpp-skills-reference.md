@@ -1,6 +1,6 @@
 # AdvPL/TLPP Agent Skills
 
-A collection of **19 AI agent skills** for the **TOTVS Protheus ERP** ecosystem, covering the **AdvPL** and **TLPP** (TOTVS Language Plus Plus) programming languages. These skills guide AI assistants through structured workflows for code generation, migration, quality review, testing, and documentation within the Protheus platform.
+A collection of **20 AI agent skills** for the **TOTVS Protheus ERP** ecosystem, covering the **AdvPL** and **TLPP** (TOTVS Language Plus Plus) programming languages. These skills guide AI assistants through structured workflows for code generation, migration, quality review, testing, and documentation within the Protheus platform.
 
 ---
 
@@ -31,6 +31,7 @@ Skills that generate production-ready code structures following TOTVS framework 
 | [tlpp-rest-endpoint-generator](tlpp-rest-endpoint-generator/SKILL.md) | Generates TLPP REST endpoints using annotation-based routing (`@Get`, `@Post`, `@Put`, `@Patch`, `@Delete`) with the `oRest` object. Follows TOTVS TTALK API standards including pagination, error model, and Swagger documentation. |
 | [entry-point-designer](entry-point-designer/SKILL.md) | Designs and documents Protheus Entry Points with proper `User Function` signatures, `PARAMIXB` parameter layouts, return value specifications, and defensive programming patterns. |
 | [query-builder](query-builder/SKILL.md) | Builds optimized and secure SQL queries for Protheus tables. Includes mandatory filters (`D_E_L_E_T_`, branch), index-driven query design, SQL injection prevention, and patterns for both Embedded SQL (preferring `FWExecStatement`) and Workarea (`DBSelectArea`/`DBSeek`). |
+| [protheus-empenho-lote-endereco](protheus-empenho-lote-endereco/SKILL.md) | Implements material commitment (SD4) split by lot and/or WMS address (SBF/SDC) in PCP routines (MATA680/MATA681) via `MSExecAuto` on `MATA380`/`MATA381` — covers the official `AUT_D4_END` virtual field format, the two-separate-calls pattern (lot then address), field pitfalls (`D4_COD` vs `D4_PRODUTO`), 10-character function name truncation, and the `MATA261` physical-segregation fallback when the physical write-off ignores the committed address. |
 
 ### Migration and Modernization
 
@@ -101,6 +102,8 @@ Skill-specific reference materials.
 | `mvc-generator` | [mvc-code-templates.md](mvc-generator/references/mvc-code-templates.md) | Complete AdvPL/TLPP code templates for Protheus MVC screens (Model 1 and Model 3). |
 | `query-builder` | [cross-database-compatibility.md](query-builder/references/cross-database-compatibility.md) | Cross-database compatibility (PostgreSQL, MSSQL, Oracle) and dialect translation via `ChangeQuery()`. |
 | `query-builder` | [query-patterns-and-examples.md](query-builder/references/query-patterns-and-examples.md) | Query patterns and complete code examples with workarea patterns. |
+| `protheus-empenho-lote-endereco` | [execauto-mata380-381.md](protheus-empenho-lote-endereco/references/execauto-mata380-381.md) | `MSExecAuto` call format for `MATA380`/`MATA381`, official `AUT_D4_END` format (TDN PSIGAPCP0301 example), and the `MATA261` physical-segregation fallback. |
+| `protheus-empenho-lote-endereco` | [MT681AIN-template.prw](protheus-empenho-lote-endereco/references/MT681AIN-template.prw) | Complete, production-tested Entry Point implementing the lot/address commitment split flow. |
 | `refactor` | [code-smells-and-patterns.md](refactor/references/code-smells-and-patterns.md) | Before/after examples for 15 code smells and 4 design patterns in AdvPL/TLPP. |
 | `sql-code-review` | [database-specific-best-practices.md](sql-code-review/references/database-specific-best-practices.md) | Database-specific best practices and ANSI SQL patterns for cross-database compatibility. |
 | `sql-code-review` | [sql-performance-and-quality-patterns.md](sql-code-review/references/sql-performance-and-quality-patterns.md) | SQL performance and quality patterns — query structure analysis and optimization. |
@@ -123,6 +126,7 @@ Skill-specific reference materials.
 | Build a REST API | `tlpp-rest-endpoint-generator` |
 | Customize a standard routine | `entry-point-designer` |
 | Write a SQL query for Protheus | `query-builder` |
+| Split a PCP material commitment by lot and/or address (MATA380/MATA381) | `protheus-empenho-lote-endereco` |
 | Migrate `.prw` to `.tlpp` | `advpl-to-tlpp-migration` |
 | Review code quality | `code-review` |
 | Review SQL code | `sql-code-review` |

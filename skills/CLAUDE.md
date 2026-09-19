@@ -334,7 +334,7 @@ See [advpl-tlpp/README.md](advpl-tlpp/README.md) for the full catalog. Summary:
 
 | Category | Skills |
 |----------|--------|
-| **Code Generation** | `mvc-generator`, `tlpp-rest-endpoint-generator`, `entry-point-designer`, `query-builder`, `fwrest-client-generator` |
+| **Code Generation** | `mvc-generator`, `tlpp-rest-endpoint-generator`, `entry-point-designer`, `query-builder`, `fwrest-client-generator`, `protheus-empenho-lote-endereco` |
 | **Migration** | `advpl-to-tlpp-migration` |
 | **Quality** | `code-review`, `sql-code-review`, `refactor`, `refactor-method-complexity-reduce`, `sql-optimization`, `utf8-to-cp1252-conversion` |
 | **Tests** | `tir-test-generator` |

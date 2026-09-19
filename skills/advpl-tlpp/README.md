@@ -32,6 +32,7 @@ Skills que geram estruturas de código prontas para produção seguindo padrões
 | [fwrest-client-generator](fwrest-client-generator/SKILL.md) | Gera código AdvPL/TLPP que **consome** APIs REST externas usando a classe cliente `FWRest`. Cobre os verbos `GET`, `POST`, `PUT`, `DELETE`, construção de headers, parâmetros de query/path, serialização de body JSON, autenticação (No Auth, HTTP Basic, Bearer/JWT, OAuth 2.0), timeout, SSL, tratamento de status codes e padrões try/catch em TLPP. |
 | [entry-point-designer](entry-point-designer/SKILL.md) | Projeta e documenta Pontos de Entrada do Protheus com assinaturas adequadas de `User Function`, layouts de parâmetros `PARAMIXB`, especificações de valores de retorno e padrões de programação defensiva. |
 | [query-builder](query-builder/SKILL.md) | Constrói consultas SQL otimizadas e seguras para tabelas do Protheus. Inclui filtros obrigatórios (`D_E_L_E_T_`, filial), design de consultas orientado a índices, prevenção de SQL injection e padrões tanto de SQL Embarcado (`TCQuery`) quanto de Workarea (`DBSelectArea`/`DBSeek`). |
+| [protheus-empenho-lote-endereco](protheus-empenho-lote-endereco/SKILL.md) | Implementa empenho de materiais (SD4) dividido por lote e/ou endereço de WMS (SBF/SDC) em rotinas de PCP (MATA680/MATA681) via `MSExecAuto` do `MATA380`/`MATA381` — cobre o formato oficial do campo virtual `AUT_D4_END`, o padrão de duas chamadas separadas (lote depois endereço), armadilhas de campo (`D4_COD` vs `D4_PRODUTO`), truncamento de nomes de função a 10 caracteres, e a alternativa de segregação física via `MATA261` quando a baixa não respeita o endereço empenhado. |
 
 ### Migração e Modernização
 
@@ -118,6 +119,8 @@ Materiais de referência específicos de cada skill.
 | `fwrest-client-generator` | [fwrest-api-reference.md](fwrest-client-generator/references/fwrest-api-reference.md) | Referência da API da classe `FWRest` — construtor, métodos, propriedades e códigos de retorno. |
 | `fwrest-client-generator` | [fwrest-authentication-patterns.md](fwrest-client-generator/references/fwrest-authentication-patterns.md) | Padrões de autenticação para `FWRest` — No Auth, HTTP Basic, Bearer Token/JWT e OAuth 2.0. |
 | `fwrest-client-generator` | [fwrest-client-templates.md](fwrest-client-generator/references/fwrest-client-templates.md) | Templates completos de código cliente `FWRest` para `GET`, `POST`, `PUT` e `DELETE`. |
+| `protheus-empenho-lote-endereco` | [execauto-mata380-381.md](protheus-empenho-lote-endereco/references/execauto-mata380-381.md) | Formato de chamada do `MSExecAuto` para `MATA380`/`MATA381`, formato oficial de `AUT_D4_END` (exemplo TDN PSIGAPCP0301) e a alternativa de segregação física via `MATA261`. |
+| `protheus-empenho-lote-endereco` | [MT681AIN-template.prw](protheus-empenho-lote-endereco/references/MT681AIN-template.prw) | Ponto de Entrada completo e testado em produção implementando o fluxo de empenho por lote/endereço. |
 | `advpl-tlpp-sdd` | [project-init.md](advpl-tlpp-sdd/references/project-init.md) · [brownfield-mapping.md](advpl-tlpp-sdd/references/brownfield-mapping.md) | Inicialização de projetos novos e mapeamento de codebases brownfield existentes. |
 | `advpl-tlpp-sdd` | [specify.md](advpl-tlpp-sdd/references/specify.md) · [discuss.md](advpl-tlpp-sdd/references/discuss.md) · [design.md](advpl-tlpp-sdd/references/design.md) · [tasks.md](advpl-tlpp-sdd/references/tasks.md) | Fases do pipeline SDD — especificação, discussão de áreas cinzas, design arquitetural e breakdown de tarefas. |
 | `advpl-tlpp-sdd` | [implement.md](advpl-tlpp-sdd/references/implement.md) · [validate.md](advpl-tlpp-sdd/references/validate.md) · [quick-mode.md](advpl-tlpp-sdd/references/quick-mode.md) | Execução, validação/UAT interativo e modo rápido (quick mode) para tarefas pequenas. |
@@ -134,6 +137,7 @@ Materiais de referência específicos de cada skill.
 | Consumir uma API REST externa | `fwrest-client-generator` |
 | Customizar uma rotina padrão | `entry-point-designer` |
 | Escrever uma consulta SQL para o Protheus | `query-builder` |
+| Dividir empenho de PCP por lote e/ou endereço (MATA380/MATA381) | `protheus-empenho-lote-endereco` |
 | Migrar `.prw` para `.tlpp` | `advpl-to-tlpp-migration` |
 | Revisar qualidade de código | `code-review` |
 | Revisar código SQL | `sql-code-review` |
