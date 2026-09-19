@@ -47,6 +47,7 @@ ACD/              → Pontos de entrada de imagem/etiqueta do módulo ACD (Autom
 A650LEMP.prw      → Ponto de entrada de Gestão de Fretes (GFE) — redireciona local de armazém '01' → '97'
 MA680INC.prw      → Ponto de entrada de estoque (SIGAEST) — endereçamento automático no armazém de processo '97'
 MT681INC.prw      → Ponto de entrada de faturamento (SIGAFAT) — mesmo endereçamento automático no armazém de processo '97'
+MT681AIN.prw      → Ponto de entrada do MATA681 (Apontamento de Produção, SIGAPCP) — antes da baixa dos componentes: preenche lote (SD4) e gera empenho por endereço (SDC) a partir do saldo na SBF
 
 skills/           → Guidelines AdvPL/TLPP (CLAUDE.md) e skill references (compartilhado entre projetos ThinkFast)
 ```
@@ -63,6 +64,7 @@ skills/           → Guidelines AdvPL/TLPP (CLAUDE.md) e skill references (comp
 | `A650LEMP.prw` | Gestão de Fretes (GFE) — ajuste de local de armazém |
 | `MA680INC.prw` | Estoque (SIGAEST) — endereçamento automático no armazém de processo |
 | `MT681INC.prw` | Faturamento (SIGAFAT) — endereçamento automático no armazém de processo |
+| `MT681AIN.prw` | PCP (SIGAPCP) — MATA681, antes da baixa do empenho no apontamento de produção: lote (SD4) e empenho por endereço (SDC) |
 
 > Lista construída a partir do conteúdo real dos fontes deste repositório. Atualize esta tabela conforme novos módulos/arquivos forem adicionados — não copie tabelas de outros projetos ThinkFast sem validar contra o conteúdo real deste repositório.
 
@@ -71,5 +73,6 @@ skills/           → Guidelines AdvPL/TLPP (CLAUDE.md) e skill references (comp
 ## Padrões Específicos do Projeto
 
 - O armazém de processo `'97'` aparece como destino recorrente de endereçamento automático (`A100Distri`) em `MA680INC.prw` e `MT681INC.prw` — mantenha esse padrão ao criar novos pontos de entrada de endereçamento, salvo indicação em contrário do usuário.
+- O campo padrão `C2_ITEMCTA` (Ordem de Produção — SC2) é reaproveitado neste projeto para armazenar o **endereço de processo** da OP, fora do seu uso padrão TOTVS (item de conta contábil). `MT681AIN.prw` segue esse mesmo padrão, já usado em `MA680INC.prw`/`MT681INC.prw`, para localizar o endereço ao consultar a SBF/gravar a SDC.
 - `A650LEMP.prw` reescreve o local `'01'` para `'97'` no fluxo de frete (GFE) — considere esse mapeamento ao mexer em rotinas de frete que leem o local de armazém.
 - Os arquivos deste repositório ainda usam acentuação em CP-1252 (ex.: `Usu�rio`, `a��o` nos comentários existentes) — ao editar esses arquivos, preserve a codificação CP-1252 conforme a regra geral em [`skills/CLAUDE.md`](skills/CLAUDE.md); não converta para UTF-8.
